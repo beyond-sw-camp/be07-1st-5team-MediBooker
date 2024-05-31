@@ -1,28 +1,37 @@
 -- 이 프로시저는 의사의 휴무일과 현재의 요일이 겹치지 않으면 데이터를 삽입한다. 
 -- waiting_count 값 부여
 -- status에 접수 값 default로 부여 
+-- 업데이트 기능 추가
+
 
 create
-    definer = root@`%` procedure InsertRegistration2(IN doctor_id_param int, IN symptom_param varchar(255),
-                                                     IN patient_name_param varchar(30),
-                                                     IN identity_number_param varchar(20),
-                                                     IN patient_phone_param varchar(20), IN address_param varchar(255))
+    definer = root@`%` procedure InsertOrUpdateRegistration(IN doctor_id_param int, IN symptom_param varchar(255),
+                                                            IN patient_name_param varchar(30),
+                                                            IN identity_number_param varchar(20),
+                                                            IN patient_phone_param varchar(20),
+                                                            IN address_param varchar(255))
 BEGIN
     DECLARE today_day VARCHAR(10);
     DECLARE patient_id_param INT;
-    DECLARE last_waiting_count INT;
 
-    -- 현재 요일을 조회한다.
+    -- 현재 요일을  조회한다.
     SET today_day = DAYNAME(NOW());
 
     -- 기존에 방문한 환자가 있는지 확인한다.
-    -- 만약에 기존에 방문한 환자가 존재한다면 기존 데이터를 삽입.
     SELECT patient_id INTO patient_id_param
     FROM Patients
     WHERE identity_number = identity_number_param;
 
-    -- 환자 테이블에 등록된 환자가 업다면 이 환자를 새로운 환자로 등록한다.
-    IF patient_id_param IS NULL THEN
+    -- 기존 환자가 있다면? ->  환자 정보를 입력한 정보로 업데이트
+    IF patient_id_param IS NOT NULL THEN
+        UPDATE Patients
+        SET
+            patient_name = patient_name_param,
+            patient_phone = patient_phone_param,
+            address = address_param
+        WHERE patient_id = patient_id_param;
+    ELSE
+        -- 기존 환자가 없으면? -> 새로운 환자 정보를 삽입하고 마지막 순번의 환자id 부여
         INSERT INTO Patients (patient_name, identity_number, patient_phone, address)
         VALUES (patient_name_param, identity_number_param, patient_phone_param, address_param);
         SET patient_id_param = LAST_INSERT_ID();
