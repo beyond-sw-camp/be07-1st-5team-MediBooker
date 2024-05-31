@@ -1,0 +1,95 @@
+테이블 설계
+
+### 1. Patients (환자 테이블)
+
+- `patient_id` (INT, PRIMARY KEY, AUTO_INCREMENT): 환자 ID
+- `patient_name` (VARCHAR(100)): 이름
+- `identity_number`  (VARCHAR(20)): 주민번호
+- `patient_phone` (VARCHAR(15)): 전화번호
+- `address` (VARCHAR(255)): 주소
+- `patient_uthentication` (enum): 사용자 인증(Y OR N) 디폴트는 N
+- `del_yn` (enum): 삭제 여부(Y OR N) 디폴트는 N
+
+### 2. Doctors (의사 테이블)
+
+- `doctor_id` (INT, PRIMARY KEY, AUTO_INCREMENT): 의사 ID
+- `doctor_name` (VARCHAR(100)): 이름
+- `department_id` (INT, FOREIGN KEY ): 진료과 ID
+- `phone` (VARCHAR(15)): 전화번호
+- `email` (VARCHAR(100)): 이메일 주소
+- `office_number` (VARCHAR(10)): 진료실 번호
+- `del_yn` (enum): 삭제 여부(Y OR N) 디폴트는 N
+
+### 3. Departments (진료과 테이블)
+
+- `department_id` (INT, PRIMARY KEY, AUTO_INCREMENT): 진료과 ID
+- `name` (VARCHAR(100)): 진료과 이름 (예: 소아과, 이비인후과, 내과, 가정의학과)
+- `description` (TEXT): 진료과 설명
+- `department_phone_number` (VARCHAR(15)): 진료과 전화번호
+- `del_yn` (enum): 삭제 여부(Y OR N) 디폴트는 N
+
+
+### 4. Medical_Records (진료 기록 테이블)
+
+- `record_id` (INT, PRIMARY KEY, AUTO_INCREMENT): 기록 ID
+- `patient_id` (INT, FOREIGN KEY): 환자 ID
+- `doctor_id` (INT, FOREIGN KEY): 의사 ID
+- `department_id` (INT, FOREIGN KEY): 진료과 ID
+- `manager_id` (INT, FOREIGN KEY): 관리자 ID
+- `diagnosis` (TEXT): 진단 내용
+- `treatment` (TEXT): 치료 내용
+- `prescription` (TEXT): 처방 내용
+- `visit_date` (DATETIME): 방문 날짜
+- `del_yn` (enum): 삭제 여부(Y OR N) 디폴트는 N
+
+### 5. Payments (결제 테이블)
+
+- `patient_id` (INT, FOREIGN KEY): 환자 ID
+- `record_id` (INT, FOREIGN KEY): 진료 기록 ID
+- `amount` (FLOAT): 결제 금액
+- `payment_date` (DATETIME): 결제 날짜
+- `payment_method` (enum): 온라인 결제 Y, 오프라인 결제 N 디폴트는 N
+- `del_yn` (enum): 삭제 여부(Y OR N) 디폴트는 N
+
+### 6. Schedules (의사 일정 테이블)
+
+- `schedule_id` (INT, PRIMARY KEY, AUTO_INCREMENT): 일정 ID
+- `doctor_id` (INT, FOREIGN KEY): 의사 ID
+- `vacation_date` (DATETIME): 의사 휴무 날짜
+- `del_yn` (enum): 삭제 여부(Y OR N) 디폴트는 N
+
+### 7. Feedback (피드백 테이블)
+
+- `feedback_id` (INT, PRIMARY KEY, AUTO_INCREMENT): 피드백 ID
+- `user_id` (INT, FOREIGN KEY): 사용자 ID
+- `doctor_id` (INT, FOREIGN KEY): 의사 ID
+- `rating` (INT): 평점
+- `feedback_text` (TEXT): 피드백 내용
+- `created_at` (DATETIME): 피드백 생성 날짜
+- `del_yn` (enum): 삭제 여부(Y OR N) 디폴트는 N
+
+### 8. Registrations (접수 테이블)
+
+- `registration_id` (INT, PRIMARY KEY, AUTO_INCREMENT): 접수 ID
+- `patient_id` (INT, FOREIGN KEY): 환자 ID
+- `doctor_id` (INT, FOREIGN KEY): 의사 ID
+- `status` (enum(접수됨, 취소됨, 완료됨)): 접수 상태
+- `created_time` (DATETIME): 데이터 생성 날짜 및 시간
+- `del_yn` (enum): 삭제 여부(Y OR N) 디폴트는 N
+- `manager_id` (INT, FOREIGN KEY): 관리자 ID
+
+### 9. Waiting (대기 테이블)
+
+- `waiting_id` (INT, PRIMARY KEY, AUTO_INCREMENT): 대기 ID
+- `registration_id` (INT, FOREIGN KEY): 접수 ID
+- `patient_id` (INT, FOREIGN KEY): 환자 ID
+- `waiting_count` (INT): 혼잡도 수준 (대기 인원으로, 내 앞에 몇명이 있는지 나타냄, 순번)
+- `created_time` (DATETIME, FOREIGN KEY(접수테이블시간)): 데이터 생성 날짜 및 시간
+
+### 10. Manager (관리자 테이블)
+
+- `manager_id` (INT, PRIMARY KEY, AUTO_INCREMENT): 관리자 ID
+- `manager_name` (VARCHAR(100)): 관리자 이름
+- `management_phone_number` (VARCHAR(15)): 관리부서 전화번호
+- `department_id` (INT, FOREIGN KEY): 진료과 ID
+- `del_yn` (enum): 삭제 여부(Y OR N) 디폴트는 N
