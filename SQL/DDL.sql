@@ -85,39 +85,65 @@ CREATE TABLE Registrations (
     FOREIGN KEY (doctor_id) REFERENCES Doctors(doctor_id)
 );
 
-CREATE TABLE Waiting (
-    waiting_id INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE Waiting
+(
+    waiting_id      INT PRIMARY KEY AUTO_INCREMENT,
     registration_id INT,
-    patient_id INT,
-    waiting_count INT,
-    status ENUM('접수', '취소', '완료') DEFAULT '접수' NOT NULL,
-    FOREIGN KEY (registration_id) REFERENCES Registrations(registration_id),
-    FOREIGN KEY (patient_id) REFERENCES Patients(patient_id)
+    patient_id      INT,
+    waiting_count   INT,
+    created_time    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    status          ENUM ('접수', '취소', '완료') DEFAULT '접수' NOT NULL,
+    FOREIGN KEY (registration_id) REFERENCES Registrations (registration_id),
+    FOREIGN KEY (patient_id) REFERENCES Patients (patient_id)
 );
 
 
 -- InsertRegistration 프로시저 생성
-CREATE PROCEDURE InsertRegistration(IN doctor_id_param INT, IN symptom_param VARCHAR(255))
+DELIMITER //
+
+CREATE PROCEDURE InsertRegistration2(
+    IN doctor_id_param INT,
+    IN symptom_param VARCHAR(255),
+    IN patient_name_param VARCHAR(30),
+    IN identity_number_param VARCHAR(20),
+    IN patient_phone_param VARCHAR(20),
+    IN address_param VARCHAR(255)
+)
 BEGIN
     DECLARE today_day VARCHAR(10);
+    DECLARE patient_id_param INT;
+    DECLARE last_waiting_count INT;
+
+    -- 현재 요일을 조회한다. 
     SET today_day = DAYNAME(NOW());
 
+    -- 기존에 방문한 환자가 있는지 확인한다.
+    -- 만약에 기존에 방문한 환자가 존재한다면 기존 데이터를 삽입...
+    SELECT patient_id INTO patient_id_param
+    FROM Patients
+    WHERE identity_number = identity_number_param;
+
+    -- 환자 테이블에 등록된 환자가 업다면 이 환자를 새로운 환자로 등록한다. 근데 순서를 바꿀까 고민중..
+    IF patient_id_param IS NULL THEN
+        INSERT INTO Patients (patient_name, identity_number, patient_phone, address)
+        VALUES (patient_name_param, identity_number_param, patient_phone_param, address_param);
+        SET patient_id_param = LAST_INSERT_ID();
+    END IF;
+
+    -- 의사의 휴무일과 겹치지 않는 경우에만 접수가 가능하다.
     INSERT INTO Registrations (doctor_id, symptom)
     SELECT doctor_id_param, symptom_param
     FROM Doctors AS d
     JOIN Schedules AS s ON d.doctor_id = s.doctor_id
     WHERE d.doctor_id = doctor_id_param AND s.vacation_date != today_day;
+
+    -- 삽입된 접수의 ID를 조회한다.
+    SET @last_inserted_id = LAST_INSERT_ID();
+
+    -- 대기 상태 테이블에 데이터를 추가하고 이 상태의 값은 디폴트인 접수로 삽입함. 
+    INSERT INTO Waiting (registration_id, patient_id, waiting_count, status, created_time)
+    SELECT @last_inserted_id, patient_id_param, COALESCE(MAX(waiting_count), 0) + 1, '접수', NOW()
+    FROM Waiting;
 END//
 
-
-
-
-
-
-
-
-
-
-
-
-
+DELIMITER ;
