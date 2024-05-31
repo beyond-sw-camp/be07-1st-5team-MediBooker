@@ -96,7 +96,18 @@ CREATE TABLE Waiting (
 );
 
 
+-- InsertRegistration 프로시저 생성
+CREATE PROCEDURE InsertRegistration(IN doctor_id_param INT, IN symptom_param VARCHAR(255))
+BEGIN
+    DECLARE today_day VARCHAR(10);
+    SET today_day = DAYNAME(NOW());
 
+    INSERT INTO Registrations (doctor_id, symptom)
+    SELECT doctor_id_param, symptom_param
+    FROM Doctors AS d
+    JOIN Schedules AS s ON d.doctor_id = s.doctor_id
+    WHERE d.doctor_id = doctor_id_param AND s.vacation_date != today_day;
+END//
 
 
 
