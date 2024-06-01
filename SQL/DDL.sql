@@ -82,7 +82,7 @@ CREATE TABLE Registrations (
     registration_id INT PRIMARY KEY AUTO_INCREMENT,
     doctor_id INT NOT NULL,
     symptom VARCHAR(255),
-    created_time DATETIME,
+    created_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (doctor_id) REFERENCES Doctors(doctor_id)
 );
 

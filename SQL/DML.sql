@@ -1,108 +1,103 @@
+-- Departments 데이터 삽입
+INSERT INTO Departments (name, description, department_phone_number) VALUES
+('내과', '내과 치료', '123-456-7890'),
+('이비인후과', '귀, 코, 목 치료', '987-654-3210'),
+('정형외과', '뼈와 관절 치료', '456-789-1234');
 
-describe Departments;
-describe Patients;
-describe Manager;
-describe Doctors;
-describe Medical_Records;
-describe Payments;
-describe Schedules;
-describe Feedback;
-describe  Registrations;
-describe Waiting;
+-- Patients 데이터 삽입
+INSERT INTO Patients (patient_name, identity_number, patient_phone, address, patient_authentication) VALUES
+('김철수', '123456-1234567', '010-1234-5678', '서울특별시 강남구 테헤란로 123', 'N'),
+('이영희', '654321-7654321', '010-8765-4321', '서울특별시 강남구 테헤란로 456', 'N'),
+('박민수', '111222-2345678', '010-1111-2222', '서울특별시 서초구 강남대로 789', 'N'),
+('최지현', '333444-3456789', '010-3333-4444', '서울특별시 서초구 서초대로 101', 'N'),
+('정수빈', '555666-4567890', '010-5555-6666', '서울특별시 송파구 올림픽로 202', 'N'),
+('한예진', '777888-5678901', '010-7777-8888', '서울특별시 송파구 가락로 303', 'N'),
+('오진우', '999000-6789012', '010-9999-0000', '서울특별시 강동구 천호대로 404', 'N'),
+('김하늘', '112233-7890123', '010-1122-3344', '서울특별시 강동구 강동대로 505', 'N'),
+('이서준', '445566-8901234', '010-4455-6677', '서울특별시 관악구 신림로 606', 'N'),
+('장민호', '778899-9012345', '010-7788-9900', '서울특별시 관악구 봉천로 707', 'N'),
+('윤지영', '001122-0123456', '010-0011-2233', '서울특별시 동작구 사당로 808', 'N'),
+('배민정', '334455-1234567', '010-3344-5566', '서울특별시 동작구 상도로 909', 'N');
 
-select * from Departments;
-select * from Patients;
-select * from Manager;
-select * from Doctors;
-select * from Medical_Records;
-select * from  Payments;
-select * from Schedules;
-select * from Feedback;
-select * from Registrations;
-select * from Waiting;
+-- Manager 데이터 삽입
+INSERT INTO Manager (department_id, manager_name) VALUES
+(1, '박성민'),
+(2, '김현수'),
+(3, '이정민');
 
--- De, Pa, Ma, Do, M_R, Pay, Se, Feed, Reg, Waiting 
+-- Doctors 데이터 삽입
+INSERT INTO Doctors (doctor_name, department_id, phone, email, office_number, avg_rating) VALUES
+('박준영', 1, '010-1111-2222', 'park@hospital.com', '101', 4.5),
+('김서영', 2, '010-3333-4444', 'kim@hospital.com', '102', 4.8),
+('최민호', 3, '010-5555-6666', 'choi@hospital.com', '103', 4.7),
+('정예슬', 1, '010-7777-8888', 'jung@hospital.com', '104', 4.6),
+('이주현', 2, '010-9999-0000', 'lee@hospital.com', '105', 4.9);
 
+-- Medical_Records 데이터 삽입
+INSERT INTO Medical_Records (patient_id, doctor_id, department_id, manager_id, diagnosis, treatment, prescription, visit_date) VALUES
+(1, 1, 1, 1, '고혈압', '생활 습관 개선', '약물 A', '2024-01-15 10:00:00'),
+(2, 2, 2, 2, '편두통', '휴식과 약물 복용', '약물 B', '2024-02-20 11:30:00'),
+(3, 3, 3, 3, '골절', '수술 및 물리 치료', '약물 C', '2024-03-10 09:00:00'),
+(4, 4, 1, 1, '당뇨병', '운동 및 식이 요법', '약물 D', '2024-04-25 14:00:00'),
+(5, 5, 2, 2, '비염', '항히스타민제 복용', '약물 E', '2024-05-15 13:00:00'),
+(6, 1, 1, 1, '감기', '충분한 휴식', '약물 F', '2024-06-05 10:30:00'),
+(7, 2, 2, 2, '천식', '기관지 확장제', '약물 G', '2024-07-10 12:00:00'),
+(8, 3, 3, 3, '관절염', '물리 치료', '약물 H', '2024-08-20 15:30:00'),
+(9, 4, 1, 1, '고지혈증', '식이 요법', '약물 I', '2024-09-10 11:00:00'),
+(10, 5, 2, 2, '중이염', '항생제 복용', '약물 J', '2024-10-15 16:00:00');
 
+-- Payments 데이터 삽입
+INSERT INTO Payments (record_id, amount, payment_date, payment_method) VALUES
+(1, 200.0, '2024-01-15 11:00:00', '온라인'),
+(2, 150.0, '2024-02-20 12:00:00', '오프라인'),
+(3, 300.0, '2024-03-10 10:00:00', '온라인'),
+(4, 250.0, '2024-04-25 15:00:00', '오프라인'),
+(5, 100.0, '2024-05-15 14:00:00', '온라인'),
+(6, 50.0, '2024-06-05 11:00:00', '온라인'),
+(7, 120.0, '2024-07-10 12:30:00', '오프라인'),
+(8, 180.0, '2024-08-20 16:00:00', '온라인'),
+(9, 220.0, '2024-09-10 11:30:00', '오프라인'),
+(10, 140.0, '2024-10-15 16:30:00', '온라인');
 
-INSERT INTO Departments (name, description, department_phone_number)
-VALUES ('내과', '내과 진료과', '02-1234-1234'),
-       ('소아과', '소아과 진료과', '02-5678-5678');
-
-INSERT INTO Patients (patient_name, identity_number, patient_phone, address)
-VALUES ('홍길동', '900101-1234567', '010-1234-5678', '서울시 강남구'),
-       ('김영희', '950202-2345678', '010-2345-6789', '서울시 서초구');
-
-INSERT INTO Manager (department_id, manager_name)
-VALUES
-    (1, '관리자1'),
-    (2, '관리자2');
-
-INSERT INTO Doctors (doctor_name, department_id, phone, email, office_number)
-VALUES
-    ('김지은', 1, '010-3456-7890', 'kimcs@hospital.com', '101'),
-    ('박수현', 2, '010-4567-8901', 'leeyh@hospital.com', '102');
-INSERT INTO Doctors (doctor_name, department_id, phone, email, office_number)
-VALUES('김창현', 2, '010-7755-6298', 'kch@naver.com','103');
- INSERT INTO Registrations (doctor_id, symptom)
-SELECT d.doctor_id, '새로운 증상'  -- 실제로 사용할 증상 값으로 변경해야 합니다.
-FROM Doctors AS d
-JOIN Schedules AS s ON d.doctor_id = s.doctor_id
-WHERE s.vacation_date != DAYNAME(NOW());
-
-INSERT INTO Registrations (doctor_id, symptom)
-VALUES
-    (1, '감기'),
-    (2, '독감');
-
-INSERT INTO Registrations (doctor_id, symptom)
-VALUES
-    (1, '감기'),
-    (2, '독감');
-
-describe Waiting;
-
-INSERT INTO Waiting (registration_id, patient_id, waiting_count, created_time)
-VALUES
-    (1, 1, 1, NOW());
-INSERT INTO Waiting (registration_id, patient_id, waiting_count, created_time, status)
-VALUES
-    (2, 2, 2, NOW(), '접수');
-                            -- 환자        의사          진료과         관리자         진단      치료          처방
-INSERT INTO Medical_Records (patient_id, doctor_id, department_id, manager_id, diagnosis, treatment, prescription, visit_date)
-VALUES
-    (1, 1, 1, 1, '감기', '약물 치료', '타이레놀', CURDATE()),
-    (2, 2, 2, 2, '독감', '약물 치료', '타미플루', CURDATE());
-select * from Medical_Records;
-
-INSERT INTO Payments (record_id, amount, payment_date, payment_method, del_yn)
-VALUES
-    (1, 50000, NOW(), '온라인', 'N'),
-    (2, 70000, NOW(), '오프라인', 'N');
-
-INSERT INTO Schedules (doctor_id, vacation_date, del_yn)
-VALUES
-    (1, 'Sunday', 'N'),
-    (2, 'Saturday', 'N');
-select * from Doctors;
-
-INSERT INTO Schedules (doctor_id, vacation_date, del_yn)
-VALUES (3, 'Friday','N');
-
-INSERT INTO Feedback (record_id, rating, feedback_text, del_yn)
-VALUES
-    (1, 5, '친절한 진료 감사합니다.', 'N'),
-    (2, 4, '진료가 만족스러웠습니다.', 'N');
-
--- insert문으로 데이터 삽입, 의사의 휴무일과 오늘의 날짜가 다른 경우에만 삽입 
- INSERT INTO Registrations (doctor_id, symptom)
-SELECT 3, '감기'
-FROM Doctors AS d
-JOIN Schedules AS s ON d.doctor_id = s.doctor_id
-WHERE d.doctor_id = docor_id && s.vacation_date != DAYNAME(NOW());
+-- Schedules 데이터 삽입
+INSERT INTO Schedules (doctor_id, vacation_date) VALUES
+(1, 'Sunday'),
+(2, 'Monday'),
+(3, 'Tuesday'),
+(4, 'Wednesday'),
+(5, 'Thursday');
 
 
-SELECT
-    DAYOFWEEK('2024-05-30') AS day_of_week,
-    DAYNAME(now()) AS day_name,
-    WEEKDAY('2024-05-30') AS week_day;
+-- Feedback 데이터 삽입
+INSERT INTO Feedback (record_id, rating, feedback_text) VALUES
+(1, 5, '매우 만족합니다.'),
+(2, 4, '좋았습니다.'),
+(3, 3, '보통입니다.'),
+(4, 2, '별로였습니다.'),
+(5, 1, '매우 불만족입니다.'),
+(6, 5, '매우 만족합니다.'),
+(7, 4, '좋았습니다.'),
+(8, 3, '보통입니다.'),
+(9, 2, '별로였습니다.'),
+(10, 1, '매우 불만족입니다.'),
+
+
+-- Registrations 데이터 삽입
+INSERT INTO Registrations (doctor_id, symptom, created_time) VALUES
+(1, '흉통', '2024-03-05 09:00:00'),
+(2, '두통', '2024-03-06 10:00:00'),
+(3, '팔 통증', '2024-03-07 11:00:00'),
+(4, '기침', '2024-03-08 12:00:00'),
+(5, '귀 통증', '2024-03-09 13:00:00'),
+(1, '복통', '2024-03-10 14:00:00'),
+(2, '목 통증', '2024-03-11 15:00:00');
+
+-- Waiting 데이터 삽입
+INSERT INTO Waiting (registration_id, patient_id, waiting_count, status) VALUES
+(1, 1, 1, '접수'),
+(2, 2, 2, '접수'),
+(3, 3, 3, '접수'),
+(4, 4, 4, '접수'),
+(5, 5, 5, '접수'),
+(6, 6, 6, '접수'),
+(7, 7, 7, '접수');

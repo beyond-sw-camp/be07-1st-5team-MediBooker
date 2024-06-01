@@ -3,7 +3,6 @@
 -- status에 접수 값 default로 부여 
 -- 업데이트 기능 추가
 
-
 create
     definer = root@`%` procedure InsertOrUpdateRegistration(IN doctor_id_param int, IN symptom_param varchar(255),
                                                             IN patient_name_param varchar(30),
@@ -23,14 +22,15 @@ BEGIN
     WHERE identity_number = identity_number_param;
 
     -- 기존 환자가 있다면? ->  환자 정보를 입력한 정보로 업데이트
-    IF patient_id_param IS NOT NULL THEN
-        UPDATE Patients
-        SET
-            patient_name = patient_name_param,
-            patient_phone = patient_phone_param,
-            address = address_param
-        WHERE patient_id = patient_id_param;
-    ELSE
+    IF EXISTS (
+        SELECT 1
+        FROM Doctors AS d
+        JOIN Schedules AS s ON d.doctor_id = s.doctor_id
+        WHERE d.doctor_id = doctor_id_param AND s.vacation_date = today_day
+    ) THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = '휴무일입니다.';
+        ELSE
         -- 기존 환자가 없으면? -> 새로운 환자 정보를 삽입하고 마지막 순번의 환자id 부여
         INSERT INTO Patients (patient_name, identity_number, patient_phone, address)
         VALUES (patient_name_param, identity_number_param, patient_phone_param, address_param);
