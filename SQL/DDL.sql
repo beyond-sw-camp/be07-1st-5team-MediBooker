@@ -70,14 +70,14 @@ CREATE TABLE Schedules (
 );
 
 CREATE TABLE Feedback (
-    feedback_id INT PRIMARY KEY AUTO_INCREMENT,
-    record_id INT NOT NULL,
-    rating INT CHECK (rating > 0 AND rating <= 5),
-    feedback_text VARCHAR(255),
-    del_yn ENUM('N', 'Y') DEFAULT 'N',
-    FOREIGN KEY (record_id) REFERENCES Medical_Records(record_id)
-);
-
+  feedback_id int AUTO_INCREMENT,
+  record_id int NOT NULL,
+  rating int CHECK (rating > 0 and rating <= 5),
+  feedback_text VARCHAR(255),
+  del_yn enum('N','Y') DEFAULT 'N',
+  PRIMARY KEY (feedback_id),
+  UNIQUE KEY record_id (record_id)
+)
 CREATE TABLE Registrations (
     registration_id INT PRIMARY KEY AUTO_INCREMENT,
     doctor_id INT NOT NULL,
