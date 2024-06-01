@@ -45,7 +45,7 @@ CREATE TABLE Medical_Records (
     diagnosis VARCHAR(255) NOT NULL,
     treatment TEXT NOT NULL,
     prescription VARCHAR(255) NOT NULL,
-    visit_date DATETIME NOT NULL,
+    visit_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     del_yn ENUM('N', 'Y') DEFAULT 'N',
     FOREIGN KEY (patient_id) REFERENCES Patients (patient_id),
     FOREIGN KEY (doctor_id) REFERENCES Doctors (doctor_id),
@@ -78,13 +78,16 @@ CREATE TABLE Schedules (
 );
 
 CREATE TABLE Feedback (
-  feedback_id int AUTO_INCREMENT,
-  record_id int NOT NULL,
-  rating int CHECK (rating > 0 and rating <= 5),
-  feedback_text VARCHAR(255),
-  del_yn enum('N','Y') DEFAULT 'N',
-  PRIMARY KEY (feedback_id),
-  UNIQUE KEY record_id (record_id)
+    feedback_id int AUTO_INCREMENT,
+    record_id int NOT NULL,
+    rating int CHECK (
+        rating > 0
+        and rating <= 5
+    ),
+    feedback_text VARCHAR(255),
+    del_yn enum('N', 'Y') DEFAULT 'N',
+    PRIMARY KEY (feedback_id),
+    UNIQUE KEY record_id (record_id)
 );
 
 CREATE TABLE Registrations (
@@ -92,16 +95,16 @@ CREATE TABLE Registrations (
     doctor_id INT NOT NULL,
     symptom VARCHAR(255),
     created_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (doctor_id) REFERENCES Doctors(doctor_id)
+    FOREIGN KEY (doctor_id) REFERENCES Doctors (doctor_id)
 );
 
 CREATE TABLE Waiting (
     waiting_id INT PRIMARY KEY AUTO_INCREMENT,
     doctor_id INT NOT NULL,
     registration_id INT,
-    patient_id      INT,
-    waiting_count   INT,
-    created_time    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    patient_id INT,
+    waiting_count INT,
+    created_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (registration_id) REFERENCES Registrations (registration_id),
     FOREIGN KEY (doctor_id) REFERENCES Doctors (doctor_id),
     FOREIGN KEY (patient_id) REFERENCES Patients (patient_id)
