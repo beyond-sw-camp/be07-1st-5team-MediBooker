@@ -77,15 +77,14 @@ CREATE TABLE Feedback (
   del_yn enum('N','Y') DEFAULT 'N',
   PRIMARY KEY (feedback_id),
   UNIQUE KEY record_id (record_id)
-)
+);
+
 CREATE TABLE Registrations (
     registration_id INT PRIMARY KEY AUTO_INCREMENT,
     doctor_id INT NOT NULL,
     symptom VARCHAR(255),
-    patient_authentication ENUM('N', 'Y') DEFAULT 'Y',
     created_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (doctor_id) REFERENCES Doctors(doctor_id),
-    FOREIGN KEY (patient_authentication) REFERENCES Patients(patient_authentication)
+    FOREIGN KEY (doctor_id) REFERENCES Doctors(doctor_id)
 );
 
 CREATE TABLE Waiting
@@ -96,7 +95,6 @@ CREATE TABLE Waiting
     patient_id      INT,
     waiting_count   INT,
     created_time    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    status          ENUM ('접수', '취소', '완료') DEFAULT '접수' NOT NULL,
     FOREIGN KEY (registration_id) REFERENCES Registrations (registration_id),
     FOREIGN KEY (doctor_id) REFERENCES Doctors (doctor_id),    
     FOREIGN KEY (patient_id) REFERENCES Patients (patient_id)
