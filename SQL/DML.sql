@@ -93,11 +93,11 @@ INSERT INTO Registrations (doctor_id, symptom, created_time) VALUES
 (2, '목 통증', '2024-03-11 15:00:00');
 
 -- Waiting 데이터 삽입
-INSERT INTO Waiting (registration_id, patient_id, waiting_count, status) VALUES
-(1, 1, 1, '접수'),
-(2, 2, 2, '접수'),
-(3, 3, 3, '접수'),
-(4, 4, 4, '접수'),
-(5, 5, 5, '접수'),
-(6, 6, 6, '접수'),
-(7, 7, 7, '접수');
+INSERT INTO Waiting (registration_id, patient_id, doctor_id, waiting_count, status) VALUES
+(1, 1, 1, 1, '접수'),
+(2, 2, 2, 2, '접수'),
+(3, 3, 4, 3, '접수'),
+(4, 4, 4, 4, '접수'),
+(5, 5, 5, 5, '접수'),
+(6, 6, 1, 6, '접수'),
+(7, 7, 2, 7, '접수');
