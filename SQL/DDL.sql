@@ -21,7 +21,7 @@ CREATE TABLE Manager (
     department_id INT,
     manager_name VARCHAR(20) NOT NULL,
     del_yn ENUM('N', 'Y') DEFAULT 'N',
-    FOREIGN KEY (department_id) REFERENCES Departments(department_id)
+    FOREIGN KEY (department_id) REFERENCES Departments (department_id)
 );
 
 CREATE TABLE Doctors (
@@ -33,7 +33,7 @@ CREATE TABLE Doctors (
     office_number VARCHAR(10) NOT NULL,
     avg_rating FLOAT DEFAULT 0,
     del_yn ENUM('N', 'Y') DEFAULT 'N',
-    FOREIGN KEY (department_id) REFERENCES Departments(department_id)
+    FOREIGN KEY (department_id) REFERENCES Departments (department_id)
 );
 
 CREATE TABLE Medical_Records (
@@ -47,10 +47,10 @@ CREATE TABLE Medical_Records (
     prescription VARCHAR(255) NOT NULL,
     visit_date DATETIME NOT NULL,
     del_yn ENUM('N', 'Y') DEFAULT 'N',
-    FOREIGN KEY (patient_id) REFERENCES Patients(patient_id),
-    FOREIGN KEY (doctor_id) REFERENCES Doctors(doctor_id),
-    FOREIGN KEY (manager_id) REFERENCES Manager(manager_id),
-    FOREIGN KEY (department_id) REFERENCES Departments(department_id)
+    FOREIGN KEY (patient_id) REFERENCES Patients (patient_id),
+    FOREIGN KEY (doctor_id) REFERENCES Doctors (doctor_id),
+    FOREIGN KEY (manager_id) REFERENCES Manager (manager_id),
+    FOREIGN KEY (department_id) REFERENCES Departments (department_id)
 );
 
 CREATE TABLE Payments (
@@ -59,14 +59,22 @@ CREATE TABLE Payments (
     payment_date DATETIME NOT NULL,
     payment_method ENUM('온라인', '오프라인') DEFAULT '온라인' NOT NULL,
     del_yn ENUM('N', 'Y') DEFAULT 'N',
-    FOREIGN KEY (record_id) REFERENCES Medical_Records(record_id)
+    FOREIGN KEY (record_id) REFERENCES Medical_Records (record_id)
 );
 
 CREATE TABLE Schedules (
     doctor_id INT,
-    vacation_date ENUM('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday') DEFAULT 'Sunday',
+    vacation_date ENUM(
+        'Sunday',
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday'
+    ) DEFAULT 'Sunday',
     del_yn ENUM('N', 'Y') DEFAULT 'N',
-    FOREIGN KEY (doctor_id) REFERENCES Doctors(doctor_id)
+    FOREIGN KEY (doctor_id) REFERENCES Doctors (doctor_id)
 );
 
 CREATE TABLE Feedback (
@@ -83,20 +91,18 @@ CREATE TABLE Registrations (
     registration_id INT PRIMARY KEY AUTO_INCREMENT,
     doctor_id INT NOT NULL,
     symptom VARCHAR(255),
-    patient_authentication ENUM('N', 'Y') DEFAULT 'Y',
     created_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (doctor_id) REFERENCES Doctors(doctor_id)
 );
-CREATE TABLE Waiting
-(
-    waiting_id      INT PRIMARY KEY AUTO_INCREMENT,
+
+CREATE TABLE Waiting (
+    waiting_id INT PRIMARY KEY AUTO_INCREMENT,
     doctor_id INT NOT NULL,
     registration_id INT,
     patient_id      INT,
     waiting_count   INT,
     created_time    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    status          ENUM ('접수', '취소', '완료') DEFAULT '접수' NOT NULL,
     FOREIGN KEY (registration_id) REFERENCES Registrations (registration_id),
-    FOREIGN KEY (doctor_id) REFERENCES Doctors (doctor_id),    
+    FOREIGN KEY (doctor_id) REFERENCES Doctors (doctor_id),
     FOREIGN KEY (patient_id) REFERENCES Patients (patient_id)
 );
