@@ -12,7 +12,7 @@ CREATE TABLE Patients (
     identity_number VARCHAR(20) NOT NULL UNIQUE,
     patient_phone VARCHAR(20) NOT NULL UNIQUE,
     address VARCHAR(255) NOT NULL,
-    patient_authentication ENUM('N', 'Y') DEFAULT 'N',
+    patient_authentication ENUM('N', 'Y') DEFAULT 'Y',
     del_yn ENUM('N', 'Y') DEFAULT 'N'
 );
 
@@ -82,8 +82,10 @@ CREATE TABLE Registrations (
     registration_id INT PRIMARY KEY AUTO_INCREMENT,
     doctor_id INT NOT NULL,
     symptom VARCHAR(255),
+    patient_authentication ENUM('N', 'Y') DEFAULT 'Y',
     created_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (doctor_id) REFERENCES Doctors(doctor_id)
+    FOREIGN KEY (doctor_id) REFERENCES Doctors(doctor_id),
+    FOREIGN KEY (patient_authentication) REFERENCES Patients(patient_authentication)
 );
 
 CREATE TABLE Waiting
