@@ -6,7 +6,7 @@ INSERT INTO Departments (name, description, department_phone_number) VALUES
 
 -- Patients 데이터 삽입
 INSERT INTO Patients (patient_name, identity_number, patient_phone, address, patient_authentication) VALUES
-('김철수', '123456-1234567', '010-1234-5678', '서울특별시 강남구 테헤란로 123', 'N'),
+('김선뿡', '123456-1234567', '010-1234-5678', '서울특별시 강남구 테헤란로 123', 'N'),
 ('이영희', '654321-7654321', '010-8765-4321', '서울특별시 강남구 테헤란로 456', 'N'),
 ('박민수', '111222-2345678', '010-1111-2222', '서울특별시 서초구 강남대로 789', 'N'),
 ('최지현', '333444-3456789', '010-3333-4444', '서울특별시 서초구 서초대로 101', 'N'),
@@ -63,7 +63,7 @@ INSERT INTO Payments (record_id, amount, payment_date, payment_method) VALUES
 INSERT INTO Schedules (doctor_id, vacation_date) VALUES
 (1, 'Sunday'),
 (2, 'Monday'),
-(3, 'Tuesday'),
+(3, 'Saturday'),
 (4, 'Wednesday'),
 (5, 'Thursday');
 
@@ -79,7 +79,7 @@ INSERT INTO Feedback (record_id, rating, feedback_text) VALUES
 (7, 4, '좋았습니다.'),
 (8, 3, '보통입니다.'),
 (9, 2, '별로였습니다.'),
-(10, 1, '매우 불만족입니다.'),
+(10, 1, '매우 불만족입니다.');
 
 
 -- Registrations 데이터 삽입
