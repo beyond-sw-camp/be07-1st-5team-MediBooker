@@ -89,11 +89,13 @@ CREATE TABLE Registrations (
 CREATE TABLE Waiting
 (
     waiting_id      INT PRIMARY KEY AUTO_INCREMENT,
+    doctor_id INT NOT NULL,
     registration_id INT,
     patient_id      INT,
     waiting_count   INT,
     created_time    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     status          ENUM ('접수', '취소', '완료') DEFAULT '접수' NOT NULL,
     FOREIGN KEY (registration_id) REFERENCES Registrations (registration_id),
+    FOREIGN KEY (doctor_id) REFERENCES Doctors (doctor_id),    
     FOREIGN KEY (patient_id) REFERENCES Patients (patient_id)
 );
