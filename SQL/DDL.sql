@@ -31,6 +31,7 @@ CREATE TABLE Doctors (
     phone VARCHAR(20) NOT NULL UNIQUE,
     email VARCHAR(100) NOT NULL UNIQUE,
     office_number VARCHAR(10) NOT NULL,
+    avg_rating FLOAT DEFAULT 0,
     del_yn ENUM('N', 'Y') DEFAULT 'N',
     FOREIGN KEY (department_id) REFERENCES Departments(department_id)
 );
