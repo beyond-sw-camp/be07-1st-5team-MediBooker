@@ -78,6 +78,7 @@ CREATE TABLE Feedback (
   PRIMARY KEY (feedback_id),
   UNIQUE KEY record_id (record_id)
 );
+
 CREATE TABLE Registrations (
     registration_id INT PRIMARY KEY AUTO_INCREMENT,
     doctor_id INT NOT NULL,
