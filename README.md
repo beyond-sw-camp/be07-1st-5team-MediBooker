@@ -185,8 +185,11 @@ DELIMITER;
 ```
 
 ## 🎈 테스트케이스 
-[테스트케이스 - 집함](./TestCase_result)
+[테스트케이스 - 종합](./TestCase_result)
+
 [테스트케이스 - 접수](./TestCase_result/InsertOrUpdateProcedur.md)
+
 [테스트케이스 - 진료](./TestCase_result/InsertMediRecordProcedure.md)
+
 [테스트케이스 - 피드백](./TestCase_result/AddFeedbackAndUpdateRatingProcedure.md)
 
