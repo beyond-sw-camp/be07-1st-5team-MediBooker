@@ -183,3 +183,6 @@ END //
 
 DELIMITER;
 ```
+
+## 🎈 테스트케이스 
+`./path/to/TestCase_result`
