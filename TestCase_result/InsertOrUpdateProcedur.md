@@ -26,6 +26,17 @@
 - 대기 테이블
 <img src=".././img/testcase/InsertOrUpdateRegistration/1_after_waiting.png" alt="대기테이블" width="1000" height="150"/>
 
+```sql
+CALL InsertOrUpdateRegistration(
+    1, -- doctor_id_param (의사 ID)
+    '흉통', -- symptom_param (증상)
+    '김지뿡', -- patient_name_param (환자 이름)
+    '123456-1234567', -- identity_number_param (환자 ID)
+    '010-7712-8132', -- patient_phone_param (환자 전화번호)
+    '서울특별시 종로구 오르막길..' -- address_param (환자 주소)
+);
+```
+
 ---
 
 ## 2. 접수 요일이 의사의 휴무일과 일치하는 경우 접수(오류메시지 출력)
@@ -36,6 +47,17 @@
 - 프로시저 실행
 <img src=".././img/testcase/InsertOrUpdateRegistration/Registration.gif" alt="프로시저 실행" width="1000" height="500"/>
 
+```sql
+
+CALL InsertOrUpdateRegistration(
+    3, -- 휴무인 doctor_id_param (의사 ID)
+    '걸으면 허리 뿡', -- symptom_param (증상)
+    '김창뿡', -- patient_name_param (환자 이름)
+    '000604-3101943', -- identity_number_param (환자 ID)
+    '010-8765-1225', -- patient_phone_param (환자 전화번호)
+    '서울특별시 구로구 고척스카이돔' -- address_param (환자 주소)
+);
+```
 ---
 
 ## 3. 환자 테이블에 존재하지 않는 새로운 환자 접수 
@@ -48,3 +70,14 @@
 
 - 대기 테이블
 <img src=".././img/testcase/InsertOrUpdateRegistration/3_after_waiting.png" alt="대기테이블" width="1000" height="150"/>
+
+```sql
+CALL InsertOrUpdateRegistration(
+    1, -- doctor_id_param (의사 ID)
+    '방구쟁이', -- symptom_param (증상)
+    '정뿡기', -- patient_name_param (환자 이름)
+    '980213-2912307', -- identity_number_param (환자 ID)
+    '010-6442-9981', -- patient_phone_param (환자 전화번호)
+    '서울특별시 신대방 제2동 sfc빌딩' -- address_param (환자 주소)
+);
+```
