@@ -185,4 +185,4 @@ DELIMITER;
 ```
 
 ## 🎈 테스트케이스 
-`./path/to/TestCase_result`
+[테스트케이스 폴더로 이동](./path/to/TestCase_result)
