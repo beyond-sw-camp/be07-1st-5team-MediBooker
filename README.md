@@ -4,7 +4,7 @@
 
 ---
 
-## 팀명: JJOBCOC
+## 팀명: JJOB_DOC
 
 ### 팀원
 - 팀장: 김지은
@@ -185,6 +185,8 @@ DELIMITER;
 ```
 
 ## 🎈 테스트케이스 
-[테스트케이스 확인하기](./TestCase_result)
-
+[테스트케이스 - 집함](./TestCase_result)
+[테스트케이스 - 접수](./TestCase_result/InsertOrUpdateProcedur.md)
+[테스트케이스 - 진료](./TestCase_result/InsertMediRecordProcedure.md)
+[테스트케이스 - 피드백](./TestCase_result/AddFeedbackAndUpdateRatingProcedure.md)
 
