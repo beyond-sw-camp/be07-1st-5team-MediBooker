@@ -35,6 +35,10 @@ MediBooker는 환자와 병원 모두가 사용할 수 있는 혁신적인 의�
 
 ---
 ## 📝 요구사항정의서
-<img src="./img/요구사항정의서.png" alt="WBS" width="1000" height="500"/>
+<img src="./img/요구사항정의서.png" alt="요구사항정의서" width="1000" height="500"/>
 
 ## 📋 ERD
+<img src="./img/ERD_final.png" alt="ERD" width="1000" height="500"/>
+
+## 🗓️ 개발일정
+<img src="./img/WBS.png" alt="개발일정(WBS)" width="1000" height="500"/>
