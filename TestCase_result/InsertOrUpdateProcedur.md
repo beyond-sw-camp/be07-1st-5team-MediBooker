@@ -13,7 +13,7 @@
 
 ---
 
-## 1. 기존 환자 테이블에 존재하던 환자를 접수
+## 1. 기존 환자 테이블에 존재하던 환자를 접수 : 이미 환자 테이블에 존재하는 환자를 주민번호만 제외하고 나머지 정보는 수정하여 입력한다 -> 주민번호를 제외한 나머지 정보 업데이트(식별자 : 주민번호), 접수와 대기 테이블 추가
  - 환자 테이블
 <img src=".././img/testcase/InsertOrUpdateRegistration/1_after_patients.png" alt="환자테이블" width="1000" height="300"/>
 
@@ -25,17 +25,17 @@
 
 ---
 
-## 2. 의사의 휴무일과 겹치는 날 접수(오류메시지 출력)
+## 2. 접수 요일이 의사의 휴무일과 일치하는 경우 접수(오류메시지 출력)
 
 - 의사 휴무 테이블
 <img src=".././img/testcase/InsertOrUpdateRegistration/2_doctor_schedule.png" alt="의사휴무테이블" width="1000" height="150"/>
 
 - 프로시저 실행
-<img src=".././img/testcase/InsertOrUpdateRegistration/Registration.gif" alt="프로시저 실행" width="1000" height="400"/>
+<img src=".././img/testcase/InsertOrUpdateRegistration/Registration.gif" alt="프로시저 실행" width="1000" height="500"/>
 
 ---
 
-## 3. 환자 테이블에 존재하지 않는 새로운 환자 접수
+## 3. 환자 테이블에 존재하지 않는 새로운 환자 접수 : 환자 테이블에 새로운 데이터 추가, 접수와 대기 테이블 추가
 
  - 환자 테이블
 <img src=".././img/testcase/InsertOrUpdateRegistration/3_after_patients.png" alt="환자테이블" width="1000" height="300"/>
