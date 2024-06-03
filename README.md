@@ -185,11 +185,20 @@ DELIMITER;
 ```
 
 ## 🎈 테스트케이스 
-[테스트케이스 - 종합](./TestCase_result)
+[► 테스트케이스 - 종합](./TestCase_result)
 
-[테스트케이스 - 접수](./TestCase_result/InsertOrUpdateProcedur.md)
+[► 테스트케이스 - 접수](./TestCase_result/InsertOrUpdateProcedur.md)
 
-[테스트케이스 - 진료](./TestCase_result/InsertMediRecordProcedure.md)
+[► 테스트케이스 - 진료](./TestCase_result/InsertMediRecordProcedure.md)
 
-[테스트케이스 - 피드백](./TestCase_result/AddFeedbackAndUpdateRatingProcedure.md)
+[► 테스트케이스 - 피드백](./TestCase_result/AddFeedbackAndUpdateRatingProcedure.md)
+ 
+ ---
 
+## 🎉 회고
+- 김지은
+
+- 박수현
+
+- 김창현
+    - DB 프로젝트를 진행하면서 외래키 제약 조건에 대해 깊이 이해할 수 있었고, UI 없이 구현한다는 것이 생각보다 어렵다는 것을 깨달았습니다. 하지만 좋은 팀원들과 주말에 모여 함께 시간을 보내며 노력한 덕분에, 포기하지 않고 끝까지 프로젝트를 완수하고 좋은 결과를 얻을 수 있었습니다. 
