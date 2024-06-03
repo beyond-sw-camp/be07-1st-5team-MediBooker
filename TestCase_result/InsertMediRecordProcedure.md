@@ -52,3 +52,26 @@ CALL InsertMediRecord ( 13, 2, '콧물 질질 줄줄', '콧물 다 빼버려', '
 ```sql
 CALL InsertMediRecord ( 13, 1, '콧물 질질 줄줄', '콧물 다 빼버려', '파란 물약' );
 ```
+
+---
+## 4. 진료기록 추가 및 대기 데이터 삭제 -> 결제 서비스 추가
+진료기록이 남으면 결제비용을 청구한다.
+
+- 결제 서비스 추가 정상적인 진료 기록 추가 전 대기 테이블
+ <img src=".././img/testcase/InsertMediRecord/new_waiting.png" alt="기존_대기테이블" width="1000" height="300"/>
+
+- 진료 기록 추가 전 결제 테이블
+ <img src=".././img/testcase/InsertMediRecord/b_pay.png" alt="기존_결제테이블" width="1000" height="300"/>
+
+- 진료 기록 추가 후 진료 기록 테이블
+ <img src=".././img/testcase/InsertMediRecord/aa_medi.png" alt="결과_진료기록테이블" width="1000" height="300"/>
+
+- 진료 기록 추가 후 대기 테이블
+ <img src=".././img/testcase/InsertMediRecord/b_waiting.png" alt="결과_대기테이블" width="1000" height="300"/>
+
+- 진료 기록 추가 후 결제 테이블
+ <img src=".././img/testcase/InsertMediRecord/a_pay.png" alt="결과_결제테이블" width="1000" height="300"/>
+
+```sql
+ CALL InsertMediRecord(3, 4, '장염', '엄마 손은 약손','빨간 물약', 50000, '오프라인');
+```
