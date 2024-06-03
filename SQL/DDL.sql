@@ -87,7 +87,8 @@ CREATE TABLE Feedback (
     feedback_text VARCHAR(255),
     del_yn enum('N', 'Y') DEFAULT 'N',
     PRIMARY KEY (feedback_id),
-    UNIQUE KEY record_id (record_id)
+    UNIQUE KEY record_id (record_id),
+    FOREIGN KEY (record_id) REFERENCES Medical_Records (record_id)
 );
 
 CREATE TABLE Registrations (
