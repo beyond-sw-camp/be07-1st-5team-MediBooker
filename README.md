@@ -14,7 +14,18 @@
 |김지은|김창현|박수현|
 
 ---
+## 스택
+<img src="https://img.shields.io/badge/mariaDB-003545?style=for-the-badge&logo=mariaDB&logoColor=white">
+<img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
+<img src="https://img.shields.io/badge/datagrip-000000?style=for-the-badge&logo=datagrip&logoColor=white">
+<img src="https://img.shields.io/badge/visualstudiocode-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white">
+<img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
+<img src="https://img.shields.io/badge/discord-5865F2?style=for-the-badge&logo=discord&logoColor=white">
+<img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white">
+<img src="https://img.shields.io/badge/jira-0052CC?style=for-the-badge&logo=jira&logoColor=white">
+<img src="https://img.shields.io/badge/discord-5865F2?style=for-the-badge&logo=discord&logoColor=white">
 
+---
 ## 📢 프로젝트 소개
 MediBooker는 환자와 병원 모두가 사용할 수 있는 혁신적인 의료 예약 서비스입니다. 이 프로젝트는 환자들이 간편하게 병원에 접수하고 자신의 대기 순번을 확인하며, 진료 내역과 처방 내역을 쉽게 확인할 수 있도록 개발되었습니다.
 
