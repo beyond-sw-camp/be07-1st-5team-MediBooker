@@ -64,7 +64,7 @@ CALL InsertMediRecord ( 13, 1, '콧물 질질 줄줄', '콧물 다 빼버려', '
  <img src=".././img/testcase/InsertMediRecord/b_pay.png" alt="기존_결제테이블" width="1000" height="300"/>
 
 - 진료 기록 추가 후 대기 테이블
-  <img src=".././img/testcase/InsertMediRecord/b_waiting.png" alt="결과_대기테이블" width="1000" height="300"/>
+ <img src=".././img/testcase/InsertMediRecord/b_waiting.png" alt="결과_대기테이블" width="1000" height="300"/>
 
 - 진료 기록 추가 후 결제 테이블
  <img src=".././img/testcase/InsertMediRecord/a_pay.png" alt="결과_결제테이블" width="1000" height="300"/>
