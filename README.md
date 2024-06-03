@@ -58,7 +58,7 @@ MediBooker는 환자와 병원 모두가 사용할 수 있는 혁신적인 의�
 
 ---
 ## 📋 ERD
-<img src="./img/MediBookerERD.png" alt="ERD" width="1000" height="700"/>
+<img src="./img/MediBooker.png" alt="ERD" width="1000" height="700"/>
 
 ---
 ## 🖌️ 주요 쿼리 요약
