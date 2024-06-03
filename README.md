@@ -7,9 +7,11 @@
 ## 팀명: JJOB_DOC
 
 ### 팀원
-- 팀장: 김지은
-- 팀원: 박수현
-- 팀원: 김창현
+
+|팀장|팀원|팀원|
+|---|---|---|
+|<img src="./img/지은.png" width="100" height="100">|<img src="./img/창현.png" width="100" height="100">|<img src="./img/수현.jpg" width="100" height="100">|
+|김지은|김창현|박수현|
 
 ---
 
