@@ -53,7 +53,7 @@ call AddFeedbackAndUpdateRating(6, 1, '평범한 진료 실력입니다.');
     -- 환자id와 주민번호 입력시 진료 기록 조회 (환자)
     SELECT * 
     FROM Medical_Records
-    WHERE patient_id = 1;
+    WHERE patient_id = 13;
 ```
 
 ---
