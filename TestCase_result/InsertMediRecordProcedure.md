@@ -42,7 +42,7 @@ CALL InsertMediRecord ( 13, 2, '콧물 질질 줄줄', '콧물 다 빼버려', '
 <img src=".././img/testcase/InsertMediRecord/6_after_medical_records.png" alt="결과_진료테이블" width="1000" height="300"/>
 
     
-- 진료 기록 추가 시 대기 테이블에서 사용자의 정보 삭제됨
+진료 기록 추가 시 대기 테이블에서 사용자의 정보 삭제됨
 - 진료 기록 추가 전 대기 테이블
 <img src=".././img/testcase/InsertMediRecord/waiting.png" alt="기존_대기테이블" width="1000" height="300"/>
         
