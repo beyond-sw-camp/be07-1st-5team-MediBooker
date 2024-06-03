@@ -39,12 +39,15 @@ MediBooker는 환자와 병원 모두가 사용할 수 있는 혁신적인 의�
 ## 🗓️ 개발일정
 <img src="./img/WBS.png" alt="개발일정(WBS)" width="1000" height="500"/>
 
+---
 ## 📝 요구사항정의서
 <img src="./img/요구사항정의서.png" alt="요구사항정의서" width="1000" height="500"/>
 
+---
 ## 📋 ERD
 <img src="./img/ERD_final.png" alt="ERD" width="1000" height="700"/>
 
+---
 ## 🖌️ 주요 쿼리 요약
 1. DDL
 ```sql
@@ -59,7 +62,6 @@ CREATE TABLE Patients (
     del_yn ENUM('N', 'Y') DEFAULT 'N'
 );
 ```
-
 
 
 ```sql
@@ -119,7 +121,21 @@ INSERT INTO Medical_Records (patient_id, doctor_id, department_id, manager_id, d
 ```
 [► DML 전체 쿼리](./SQL/DML.sql)
 
-3. PROCEDURE
+3. DCL
+```sql
+-- admin 사용자 생성 및 모든 권한 부여
+CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin_password';
+GRANT ALL PRIVILEGES ON MediBooker.* TO 'admin'@'localhost';
+FLUSH PRIVILEGES;
+
+-- user 사용자 생성 및 SELECT 권한만 부여
+CREATE USER 'user'@'localhost' IDENTIFIED BY 'user_password';
+GRANT SELECT ON MediBooker.* TO 'user'@'localhost';
+FLUSH PRIVILEGES;
+```
+[► DCL 전체 쿼리](./SQL/DCL.sql)
+
+4. PROCEDURE
 ```sql
 DELIMITER / /
 
@@ -188,6 +204,7 @@ END //
 DELIMITER;
 ```
 
+---
 ## 🎈 테스트케이스 
 [► 테스트케이스 - 종합](./TestCase_result)
 
@@ -198,7 +215,6 @@ DELIMITER;
 [► 테스트케이스 - 피드백](./TestCase_result/AddFeedbackAndUpdateRatingProcedure.md)
  
  ---
-
 ## 🎉 회고
 - 김지은
     - DB에 대해 파고 들수록 난해해지는 어려움이 있었지만 팀원들과 의견을 나누는 과정을 통해 많이 배울 수 있는 좋은 경험이었다.
