@@ -10,7 +10,6 @@ CREATE PROCEDURE InsertMediRecord(
     IN payment_method ENUM('온라인', '오프라인')
 )
 BEGIN
-    -- Declare variables
     DECLARE department_id INT;
     DECLARE manager_id INT;
     DECLARE vacation_day ENUM('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
