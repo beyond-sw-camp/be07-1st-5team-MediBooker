@@ -42,7 +42,7 @@ CALL InsertOrUpdateRegistration(
 ## 2. 접수 요일이 의사의 휴무일과 일치하는 경우 접수(오류메시지 출력)
 
 - 의사 휴무 테이블
-<img src=".././img/testcase/InsertOrUpdateRegistration/2_doctor_schedule.png" alt="의사휴무테이블" width="1000" height="150"/>
+<img src=".././img/testcase/InsertOrUpdateRegistration/4_new_doctor_schedule.png" alt="의사휴무테이블" width="1000" height="150"/>
 
 - 프로시저 실행
 <img src=".././img/testcase/InsertOrUpdateRegistration/Registration.gif" alt="프로시저 실행" width="1000" height="500"/>

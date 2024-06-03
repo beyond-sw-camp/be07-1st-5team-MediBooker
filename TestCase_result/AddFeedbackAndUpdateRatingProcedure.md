@@ -36,7 +36,7 @@ SELECT FORMAT(avg_rating, 2) AS average_value from Doctors where doctor_id = 1;
 
 ## 2. feedback 테이블에 존재하는 record_id 사용 -> 오류 발생
 - 피드백 테이블
-<img src=".././img/testcase/AddFeedbackAndUpdateRating/7.gif" alt="결과_의사평점테이블" width="1000" height="500"/>
+<img src=".././img/testcase/AddFeedbackAndUpdateRating/7_new.gif" alt="결과_의사평점테이블" width="1000" height="500"/>
 
 ```sql
 -- 테스트 4-1. feedback 테이블에 존재하는 record_id 사용 -> 오류 발생
