@@ -66,7 +66,7 @@ CALL InsertOrUpdateRegistration(
 );
 ```
 
-![2_doctor_schedule.png](/img/testcase/InsertOrUpdateRegistration/2_doctor_schedule.png)
+![2_doctor_schedule.png](/img/testcase/InsertOrUpdateRegistration/4_new_doctor_schedule.png)
 
 ![2.gif](/img/testcase/InsertOrUpdateRegistration/2.gif)
 
@@ -108,7 +108,7 @@ CALL InsertOrUpdateRegistration(
 **테스트 1** : 의사의 휴무일이 현재의 요일과 일치하는 경우 오류 메시지’@@@선생님은 오늘 휴무입니다’를 출력한다.
 
 ```sql
-CALL InsertMediRecord ( 5, 5, '콧물 질질 줄줄', '콧물 다 빼버려', '파란 물약' );
+CALL InsertMediRecord ( 13, 3, '콧물 질질 줄줄', '콧물 다 빼버려', '파란 물약' );
 ```
 
 ![4_schedule.png](/img/testcase/InsertMediRecord/4_schedule.png)
@@ -120,7 +120,7 @@ CALL InsertMediRecord ( 5, 5, '콧물 질질 줄줄', '콧물 다 빼버려', '�
 - 대기 테이블에 일치하는 데이터(환자id, 의사id)가 없을시 오류 메세지 ’입력한 정보가 대기 목록에 존재하지 않습니다’출력
 
 ```sql
-CALL InsertMediRecord ( 2, 3, '콧물 질질 줄줄', '콧물 다 빼버려', '파란 물약' );
+CALL InsertMediRecord ( 13, 2, '콧물 질질 줄줄', '콧물 다 빼버려', '파란 물약' );
 ```
 
 ![3_after_waiting.png](/img/testcase/InsertOrUpdateRegistration/3_after_waiting.png)
@@ -132,7 +132,7 @@ CALL InsertMediRecord ( 2, 3, '콧물 질질 줄줄', '콧물 다 빼버려', '�
 - 진료 후 진료 기록을 작성하면 대기 테이블에 있던 데이터가 삭제됨
 
 ```sql
-CALL InsertMediRecord ( 1, 1, '콧물 질질 줄줄', '콧물 다 빼버려', '파란 물약' );
+CALL InsertMediRecord ( 13, 1, '콧물 질질 줄줄', '콧물 다 빼버려', '파란 물약' );
 ```
 
 - 진료 기록 추가
@@ -171,10 +171,10 @@ CALL InsertMediRecord ( 1, 1, '콧물 질질 줄줄', '콧물 다 빼버려', '�
 SELECT FORMAT(avg_rating, 2) AS average_value from Doctors where doctor_id = 1;
 
 -- 피드백 입력
-call AddFeedbackAndUpdateRating(6, 3, '평범한 진료 실력입니다.');
+call AddFeedbackAndUpdateRating(6, 1, '평범한 진료 실력입니다.');
 
 -- 피드백 입력 후 의사 평점 출력
-SELECT FORMAT(avg_rating, 2) AS average_value from Doctors where doctor_id = 2;
+SELECT FORMAT(avg_rating, 2) AS average_value from Doctors where doctor_id = 1;
 
 ```
 
@@ -185,25 +185,25 @@ SELECT FORMAT(avg_rating, 2) AS average_value from Doctors where doctor_id = 2;
 - 피드백 입력 후 피드백 테이블
     - feedback_id=6 생성
     
-    ![7_after_feedback.png](/img/testcase/AddFeedbackAndUpdateRating/7_after_feedback.png)
+    ![7_after_feedback.png](/img/testcase/AddFeedbackAndUpdateRating/7_re_after_feedback.png)
     
 - 피드백 작성전 의사 평점
     
-    ![before_avg.png](/img/testcase/AddFeedbackAndUpdateRating/before_avg.png)
+    ![before_avg.png](/img/testcase/AddFeedbackAndUpdateRating/befor_avg2.png)
     
 - 피드백 작성 후 의사 평점
     
-    ![after_avg.png](/img/testcase/AddFeedbackAndUpdateRating/after_avg.png)
+    ![after_avg.png](/img/testcase/AddFeedbackAndUpdateRating/after_avg2.png)
     
 
 **테스트 2**: 동일한 진료 id가 있을 시 피드백 작성 불가(이미 피드백을 작성한 진료)오류 출력
 
 ```sql
 -- 테스트 4-1. feedback 테이블에 존재하는 record_id 사용 -> 오류 발생
-call AddFeedbackAndUpdateRating(6, 3, '평범한 진료 실력입니다.');
+call AddFeedbackAndUpdateRating(6, 1, '평범한 진료 실력입니다.');
 ```
 
-![7.gif](/img/testcase/AddFeedbackAndUpdateRating/7.gif)
+![7.gif](/img/testcase/AddFeedbackAndUpdateRating/7_re.gif)
 
 ---
 
@@ -213,7 +213,7 @@ call AddFeedbackAndUpdateRating(6, 3, '평범한 진료 실력입니다.');
     -- 환자id와 주민번호 입력시 진료 기록 조회 (환자)
     SELECT * 
     FROM Medical_Records
-    WHERE patient_id = 1;
+    WHERE patient_id = 13;
     ```
     
     ![select_patients.png](/img/testcase/select_patients.png)
