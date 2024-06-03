@@ -79,6 +79,7 @@ CREATE TABLE Medical_Records (
     FOREIGN KEY (department_id) REFERENCES Departments (department_id)
 );
 ```
+[► DDL 전체 쿼리](./SQL/DDL.sql)
 
 
 2. DML
@@ -114,6 +115,7 @@ INSERT INTO Medical_Records (patient_id, doctor_id, department_id, manager_id, d
 (9, 4, 1, 1, '고지혈증', '식이 요법', '약물 I', '2024-09-10 11:00:00'),
 (10, 5, 2, 2, '중이염', '항생제 복용', '약물 J', '2024-10-15 16:00:00');
 ```
+[► DML 전체 쿼리](./SQL/DML.sql)
 
 3. PROCEDURE
 ```sql
