@@ -59,6 +59,7 @@ CREATE TABLE Payments (
     payment_date DATETIME NOT NULL,
     payment_method ENUM('온라인', '오프라인') DEFAULT '온라인' NOT NULL,
     del_yn ENUM('N', 'Y') DEFAULT 'N',
+    UNIQUE KEY record_id (record_id),
     FOREIGN KEY (record_id) REFERENCES Medical_Records (record_id)
 );
 
