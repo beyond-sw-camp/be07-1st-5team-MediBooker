@@ -14,7 +14,7 @@
 <img src=".././img/testcase/InsertMediRecord/4.gif" alt="프로시저 결과" width="1000" height="500"/>
 
 ```sql
-CALL InsertMediRecord ( 5, 5, '콧물 질질 줄줄', '콧물 다 빼버려', '파란 물약' );
+CALL InsertMediRecord ( 13, 3, '콧물 질질 줄줄', '콧물 다 빼버려', '파란 물약' );
 ```
 
 ---
@@ -28,7 +28,7 @@ CALL InsertMediRecord ( 5, 5, '콧물 질질 줄줄', '콧물 다 빼버려', '�
 <img src=".././img/testcase/InsertMediRecord/5.gif" alt="프로시저 결과" width="1000" height="500"/> 
 
 ```sql
-CALL InsertMediRecord ( 2, 3, '콧물 질질 줄줄', '콧물 다 빼버려', '파란 물약' );
+CALL InsertMediRecord ( 13, 2, '콧물 질질 줄줄', '콧물 다 빼버려', '파란 물약' );
 ```
 
 ---
@@ -50,5 +50,5 @@ CALL InsertMediRecord ( 2, 3, '콧물 질질 줄줄', '콧물 다 빼버려', '�
  <img src=".././img/testcase/InsertMediRecord/6_after_waiting.png" alt="기존_대기테이블" width="1000" height="300"/>       
 
 ```sql
-CALL InsertMediRecord ( 1, 1, '콧물 질질 줄줄', '콧물 다 빼버려', '파란 물약' );
+CALL InsertMediRecord ( 13, 1, '콧물 질질 줄줄', '콧물 다 빼버려', '파란 물약' );
 ```
