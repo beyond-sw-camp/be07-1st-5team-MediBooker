@@ -9,7 +9,7 @@
 ## 1. feedback 테이블에 존재하지 않는 record_id와 평점, 리뷰를 작성한다. (현재 record_id 1~5까지 존재)
 - 피드백 입력 전 피드백 테이블
 <img src=".././img/testcase/AddFeedbackAndUpdateRating/7_before_feedback.png" alt="이전_피드백테이블" width="1000" height="200"/>
-
+g
 - 피드백 입력 후 피드백 테이블
 <img src=".././img/testcase/AddFeedbackAndUpdateRating/7_re_after_feedback.png" alt="결과_피드백테이블" width="1000" height="200"/>
 
